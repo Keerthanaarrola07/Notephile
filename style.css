@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple|3d-float');
+html, body 
+{
+    width: 100%;
+    height:100%;
+}
+  
+body 
+{
+    font-size: medium;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+.info-content1 
+{
+    
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    justify-content: center;
+    animation: gradient 15s ease infinite;
+    width: 200px;
+    border: 5px solid rgb(231, 239, 231);
+    border-radius: 50px;
+    padding: 30px;
+    margin: 10px;
+    background-color: white;   
+}
+.info-content2 
+{
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    justify-content: center;
+    animation: gradient 15s ease infinite;
+    width: 200px;
+    border: 5px solid rgb(231, 239, 231);
+    border-radius: 50px;
+    padding: 40px;
+    margin: 10px;
+    background-color: white;   
+}
+.info-content3  div {
+    width: 250px;
+    margin: 10px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    font-family: monospace;
+    font-weight: bold;
+  }
+nav
+{
+    text-align: end;
+}
+img
+{
+    height: 100px;
+    width: 100px;
+}
+.header1
+{
+    text-align: center;
+    font-family: cursive;
+    font-size: x-large;
+    color: azure;
+    text-shadow: 4px 4px 4px rgba(179, 147, 211, 0.8);
+}
+.header2
+{
+    text-align: center;
+    font-family: cursive;
+    font-size: x-large;
+    color: azure;
+    text-shadow: 4px 4px 4px rgba(179, 147, 211, 0.8);
+}
+.font-effect-shadow-multiple
+{
+
+    text-align: center;
+    font-size: 30px;
+    text-shadow: 4px 4px 4px #aaa;
+}
+
+.info-content3 
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    
+}
+.navi
+{
+    text-align: end;
+}
+.input-box
+{
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    min-height: 150px;
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    margin: 20px 0;
+    outline: none;
+    border-radius: 5px;
+}
+blink {
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    animation: blinker 1s linear infinite;
+}
+button {
+    display: inline-block;
+    background-color: lightsteelblue;
+    padding: 5px;
+    width: 75px;
+    border-radius:30%;
+    color: white;
+    text-align: center;
+  }
+@keyframes gradient 
+{
+    0% 
+    { 
+        background-position: 0% 50%;
+    }
+    50% 
+    {
+        background-position: 100% 50%;
+    }
+    100% 
+    {
+        background-position: 0% 50%;
+    }
+}
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+}
