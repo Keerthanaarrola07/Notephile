@@ -9,4 +9,5 @@
 4. Using ERD create databases.
    .......
 
+This is the required ERD for the Notephile Application
    [Assignment-4_ERD.pdf](https://github.com/Keerthanaarrola07/Notephile/files/13185884/Assignment-4_ERD.pdf)
