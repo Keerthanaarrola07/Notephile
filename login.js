@@ -13,6 +13,6 @@ function register(e){
   
   };
   document.addEventListener('DOMContentLoaded',function(){
-    const loginpage = document.getElementById('loginForm');
-    loginpage.addEventListener('submit', register); 
+    const loginPage = document.getElementById('loginForm');
+    loginPage.addEventListener('submit', register); 
   });
