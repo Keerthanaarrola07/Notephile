@@ -1,21 +1,24 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const submitBtn = document.querySelector('#registerForm button');
 
-function register(e){
-    e.preventDefault();
-    let firstName= document.getElementById("firsname").value;
-    let lastName= document.getElementById("lastname").value;
-    let username= document.getElementById("username").value;
-    let password= document.getElementById("password").value;
+    submitBtn.addEventListener('click', function () {
+        const firstName = document.getElementById('firstname').value;
+        const lastName = document.getElementById('lastname').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-let details = {
-    firstName: firstname,
-    lastName:lastname,
-    username :username,
-    password: password
-};
-console.log(details);
+        if (firstName.trim() === '' || lastName.trim() === '' || username.trim() === '' || password.trim() === '') {
+            alert('Please fill in all fields.');
+            return;
+        }
 
-};
-document.addEventListener('DOMContentLoaded',function(){
-    let registerForm = document.getElementById("registerForm")
-    registerForm.addEventListener('submit', register); 
+        const userDetails = {
+            firstName: firstName,
+            lastName: lastName,
+            username: username,
+            password: password
+        };
+
+        window.location.href = 'notes.html';
+    });
 });
