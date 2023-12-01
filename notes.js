@@ -16,4 +16,3 @@ notesCont.addEventListener("click", function(el){
         el.target.parentElement.remove(); 
     }
 })
-
