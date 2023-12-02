@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       window.location.href = 'notes.html';
   });
-<<<<<<< HEAD
+
 });
-=======
-});
->>>>>>> ea0e5432a5e62c5cf775a3a2edac3777294215d5
+
