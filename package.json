@@ -4,7 +4,7 @@
   "description": "**This Notephile allows us to write different records and notes about anything. We can write, edit, delete the notes in this Web Application.**",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon run dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
