@@ -10,6 +10,6 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(401).send({ message: err.message })
     }
-});
+}); 
 
 module.exports = router;
