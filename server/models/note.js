@@ -5,7 +5,7 @@ const note = [
     }, {
         "noteTitle": "Grocery List",
         "Description": "Onions, Carrots, Tomatoes"
-    }, {
+    }, { 
         "noteTitle": "Walk with dog",
         "Description": "Take dog to the vet"
     },
