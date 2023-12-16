@@ -1,11 +1,11 @@
 // const users = [
 //     {
-//       title: "suny new paltz",
-//       content: "web project",
+//       title: "web development",
+//       content: "complete project",
 //     },
 //     {
-//       title: "america",
-//       content: "place",
+//       title: "grocery list",
+//       content: "onions, carrots",
 //     }
 //   ]
   

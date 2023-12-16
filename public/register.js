@@ -1,15 +1,15 @@
 async function register(event) {
     event.preventDefault();
 
-    let firstname = document.getElementById("firstname").value;
-    let lastname = document.getElementById("lastname").value;  
-    let username = document.getElementById("username").value; 
+    let username = document.getElementById("username").value;
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
     let formData = {
-        firstname,
-        lastname,
+        name,
         username,
+        email,
         password,
     };
 
