@@ -3,13 +3,12 @@ async function input(event) {
 
     let notes = document.getElementById("notes").value;
     let title = document.getElementById("title").value;
-    const user = JSON.parse(localStorage.getItem("user") ?? {});
-    console.log('user: ', user);
+    const UserId = getCookie("userId")
 
     let formData = {
         content: notes,
-        UserId: user.UserId,
-        title,
+        UserId: UserId,
+        title: title,
 
     };
     const options = {
@@ -21,7 +20,7 @@ async function input(event) {
     }
     await fetch("http://localhost:3000/notes/add-note", options).then(res => res.json()
     ).then(data => {
-        console.log('data: ', data);
+        //console.log('data: ', data);
         if (data.success) {
             // fetchList()
             const ul = document.getElementById("list-container");
@@ -44,16 +43,17 @@ const fetchList = async () => {
     }
     const listContainer = document.getElementById("notes-list")
     const ul = document.createElement("ul")
+    const UserId=getCookie("userId")
     ul.setAttribute("id","list-container")
-    await fetch("http://localhost:3000/notes/get-notes-by-userid/12", options).then(res => res.json()).then(data => {
+    await fetch("http://localhost:3000/notes/get-notes-by-userid/"+UserId, options).then(res => res.json()).then(data => {
         if (data.length > 0) {
             data.map(listItem => {
-                console.log('listItem: ', listItem);
+                //console.log('listItem: ', listItem);
                 const li = document.createElement("li");
                 li.innerHTML = `${listItem.title}- ${listItem.content}`;
                 ul.appendChild(li)
             })
-            console.log('ul: ', ul);
+            //console.log('ul: ', ul);
             listContainer.appendChild(ul)
         }
     }
@@ -66,3 +66,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     inputForm.addEventListener('submit', input)
     fetchList()
 });
+
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}

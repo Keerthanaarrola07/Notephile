@@ -1,10 +1,14 @@
 const express = require('express')
 const app = express()
 const path=require('path')
+const cookieParser = require('cookie-parser');
 
 app.use(express.json()); // parse JSON bodies
+app.use(cookieParser());
+
 const user = require('./server/routes/user')
 const notes = require('./server/routes/notes')
+
 
 //CORS middleware
 app.use(function(req, res, next) {
@@ -15,13 +19,50 @@ app.use(function(req, res, next) {
   });
 
   app.use(express.static(__dirname + "/public"))
-  app.get('/', (req,res)=> res.sendFile(path.join(__dirname + "/public/login.html")))
+  app.get('/', (req,res)=>{
+    const userIdCookie = req.cookies.userId;
+    if (userIdCookie) {
+        return res.redirect('/notes');
+    }
+   return res.redirect("/login")
+  });
+  app.get('/login', (req,res)=>{
+    const userIdCookie = req.cookies.userId;
+    if (userIdCookie) {
+        return res.redirect('/notes');
+    }
+    res.sendFile(path.join(__dirname + "/public/login.html"))
+  });
+  app.get('/register', (req,res)=>{
+    const userIdCookie = req.cookies.userId;
+
+    if (userIdCookie) {
+        return res.redirect('/notes');
+    }
+    res.sendFile(path.join(__dirname + "/public/register.html"))
+  });
+  app.get('/notes', (req,res)=>{
+    const userIdCookie = req.cookies.userId;
+
+    if (!userIdCookie) {
+        return res.redirect('/login');
+    }
+    res.sendFile(path.join(__dirname + "/public/notes.html"))
+  });
+  app.get('/logout', (req,res)=>{
+    res.clearCookie('userId');
+    return res.redirect("/login")
+  })
 
 
   app.use('/users', user)
 // app.use for routes above
   app.use('/notes', notes)
 // app.use for routes above
+
+app.get('*', (req, res) => {
+  return res.redirect("/login")
+});
 
 const PORT = process.env.PORT || 3000
 

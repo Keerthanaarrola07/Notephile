@@ -7,10 +7,10 @@ async function register(event) {
     let password = document.getElementById("password").value;
 
     let formData = {
-        name,
-        username,
-        email,
-        password,
+        name: name,
+        username: username,
+        email: email,
+        password: password
     };
 
     const options = {
@@ -22,16 +22,20 @@ async function register(event) {
     }
     await fetch("http://localhost:3000/users/register", options).then(res => res.json()).then(data => { 
         
-        console.log('data: ', data);
-        if(data?.UserId){
-            console.log('data: ', data);
+        //console.log('data: ', data);
+        if(data.UserId){
+            //console.log('data: ', data);
             
             document.getElementById('registerForm').reset();
-            window.location.href="./login.html"
+            window.location.href="/login"
+            
+        }
+        else{
+            alert(data.message)
         }
      })
 
-    console.log(formData);
+    //console.log(formData);
 };
 document.addEventListener('DOMContentLoaded', function () {
     let registerForm = document.getElementById('registerForm');
