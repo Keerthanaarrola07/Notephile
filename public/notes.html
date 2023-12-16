@@ -21,12 +21,26 @@
         <button type="button"><a href="login.html">LOG OUT</a></button>
     </nav>
     <div class="noteWrapper">
-    <button class="btn">Create</button>
     <div class="notes-container">
-      <!-- <p contenteditable="true" class="input-box">
-            <img src="images/trash-solid.jpg">
-        </p> -->
-    </div>
+        <h1> Notes </h1>
+        <form id="notesForm">
+          <div class="title">
+            <label>Title</label>
+            <br />
+            <input type="text" class="input" placeholder="*Note Title*" id="title">
+          </div>
+          <div class="inputform">
+            <div class="label">
+              <label>Notes</label>
+            </div>
+            <div class="content">
+              <textarea form="notesForm" id="notes" maxlength="70  " rows="15" cols="60" placeholder="Enter Content...">
+                    </textarea>
+            </div>
+          </div>
+          <div class="btn-field">
+            <input type="submit" value="SUBMIT">
+          </div>
     </div>
     <script src="notes.js"></script>
 </body>

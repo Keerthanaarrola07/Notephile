@@ -2,19 +2,18 @@ const con = require("./db_connect");
 
 async function createTable() {
   let sql = `
-  CREATE TABLE IF NOT EXISTS user (
-    userID INT NOT NULL AUTO_INCREMENT,
-    firstname VARCHAR(255) NOT NULL ,
-    lastname VARCHAR(255) NOT NULL,
-    username VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    CONSTRAINT UserPK PRIMARY KEY (userID));`
+    CREATE TABLE IF NOT EXISTS users (
+      UserId INT NOT NULL AUTO_INCREMENT,
+      UserName VARCHAR(25) NOT NULL,
+      Name VARCHAR(25) NOT NULL,
+      Password VARCHAR(255) NOT NULL,
+      Email VARCHAR(255) NOT NULL,
+      CONSTRAINT UserPK PRIMARY KEY(UserId));`
 
-    await con.query(sql)
+      await con.query(sql)
 }
 
 createTable()
-
 
 async function login(user) {
   let userResult = await getUser(user.username)
@@ -24,13 +23,14 @@ async function login(user) {
   return userResult[0]
 }
 
+// Register (Create) New User
 async function register(user) {
   let userResult = await getUser(user.username)
   if(userResult.length > 0) throw Error("Username already in use!!")
 
   let sql = `
-    INSERT INTO users(UserName, Password, Email)
-    VALUES("${user.username}", "${user.password}", "${user.email}")
+    INSERT INTO users(Name,UserName, Password, Email)
+    VALUES("${user.name}","${user.username}", "${user.password}", "${user.email}")
   `
 
   await con.query(sql)
@@ -38,7 +38,7 @@ async function register(user) {
   return newUser[0]
 }
 
-
+// Update - CRUD
 async function editUser(user) {
   let updatedUser = await getUser(user.username)
   if(updatedUser.length > 0) throw Error("Username not available!")
@@ -52,7 +52,7 @@ async function editUser(user) {
   return updatedUser[0]
 }
 
-
+// Delete User 
 async function deleteUser(user) {
   let sql = `DELETE FROM users
     WHERE UserId = ${user.UserId}
@@ -60,7 +60,7 @@ async function deleteUser(user) {
   await con.query(sql)
 }
 
-
+// Useful functions
 async function getUser(username) {
   let sql = `
     SELECT * FROM users 
@@ -70,4 +70,3 @@ async function getUser(username) {
 }
 
 module.exports = {login, register, editUser, deleteUser}
-
